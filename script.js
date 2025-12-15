@@ -151,7 +151,7 @@ saveTask.onclick = () => {
   const fileInput = document.getElementById("taskImage");
   const file = fileInput.files[0];
 
-  // Get HTML directly from contenteditable
+  // Get HTML from contenteditable
   const descHTML = document.getElementById("taskDescription").innerHTML;
 
   // Function that actually saves the task
@@ -162,7 +162,7 @@ saveTask.onclick = () => {
       start: document.getElementById("taskStart").value || "",
       end: document.getElementById("taskEnd").value || "",
       color: document.getElementById("taskColor").value,
-      image:file ? reader.result : (editIndex !== null ? tasks[editIndex].image : "images/light-bulb.gif")
+      image: imageData || "images/light-bulb.gif" // default if null/undefined
     };
 
     if (editIndex !== null) tasks[editIndex] = newTask;
@@ -186,15 +186,16 @@ saveTask.onclick = () => {
     }
 
     const reader = new FileReader();
-    reader.onload = () => saveWithImage(reader.result);
-    reader.readAsDataURL(file); // Base64
-  } 
-  // No new image (edit mode)
-  else {
-    saveWithImage(editIndex !== null ? tasks[editIndex].image : null);
+    reader.onload = () => {
+      saveWithImage(reader.result); // only here reader is defined
+    };
+    reader.readAsDataURL(file); // convert to Base64
+  } else {
+    // No file selected, use existing image (edit) or default
+    const existingImage = editIndex !== null ? tasks[editIndex].image : null;
+    saveWithImage(existingImage);
   }
-};
-
+}
 // --- Edit & Delete ---
 function openEditModal(i) {
   editIndex = i;
