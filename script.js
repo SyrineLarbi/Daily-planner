@@ -162,7 +162,7 @@ saveTask.onclick = () => {
       start: document.getElementById("taskStart").value || "",
       end: document.getElementById("taskEnd").value || "",
       color: document.getElementById("taskColor").value,
-      image: imageData
+      image:file ? reader.result : (editIndex !== null ? tasks[editIndex].image : "images/light-bulb.gif")
     };
 
     if (editIndex !== null) tasks[editIndex] = newTask;
