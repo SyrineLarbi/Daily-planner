@@ -117,7 +117,7 @@ function renderTasks() {
     wrapper.className = "task-icon-wrapper";
     if (task.image) {
       const img = document.createElement("img");
-      img.src = task.image;
+      img.src = task.image || "images/light-bulb.gif";;
       img.className = "task-icon";
       wrapper.appendChild(img);
     }
