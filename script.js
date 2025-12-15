@@ -22,7 +22,7 @@ loadVideo(currentVideoIndex);
 setInterval(() => {
   currentVideoIndex = (currentVideoIndex + 1) % videoPaths.length;
   loadVideo(currentVideoIndex);
-}, 9000);
+}, 15000);
 
 
 // --- Task Logic ---
