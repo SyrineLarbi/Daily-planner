@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Cosmic Task Board</title>
+</head>
+<body>
+
+  <!-- Video background -->
+  <video autoplay muted loop id="bg-video"></video>
+
+  <header>
+    <h1 id="Username">Hello Syrine!</h1>
+    <h1 id="current-day"></h1>
+   
+    <button id="addTaskBtn" class="add-btn">+ Add Task</button>
+  </header>
+
+  <div id="taskContainer" class="task-container"></div>
+
+  <!-- Task Modal -->
+  <div id="taskModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Create Task</h2>
+
+      <label>Title</label>
+      <input id="taskTitle" type="text" />
+
+     <label>Description</label>
+     <ul id="taskDescription" class="editable" contenteditable="true"></ul>
+
+
+
+      <label>Start Time</label>
+      <select id="taskStart" class="cosmic-select"></select>
+
+      <label>End Time</label>
+      <select id="taskEnd" class="cosmic-select"></select>
+
+
+      <label>Color</label>
+      <input id="taskColor" type="color" value="#7a66ff" />
+
+      <label>Image / Icon</label>
+      <input id="taskImage" type="file" accept="image/*" />
+
+      <div class="modal-buttons">
+        <button id="saveTask" class="save-btn">Save</button>
+        <button id="cancelTask" class="cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
